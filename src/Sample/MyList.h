@@ -18,7 +18,7 @@ void NewMyList(MyList *MyList)
     MyList->arrlen = 4;
 }
 
-void MyListAdd(MyList *list, int a)
+void MyList_Add(MyList *list, int a)
 {
     for (int i = 0; i < list->arrlen; i++)
     {
@@ -38,7 +38,7 @@ void MyListAdd(MyList *list, int a)
     {
         // 扩充数组
         int *newlist = (int *)calloc(list->arrlen * 2, sizeof(int));
-        for (int i = 0; i < list->arrlen - 1; i++)
+        for (int i = 0; i < list->count; i++)
         {
             newlist[i] = list->arr[i];
         }
@@ -51,7 +51,7 @@ void MyListAdd(MyList *list, int a)
     }
 }
 
-void MyListRemove(MyList *list, int value)
+void MyList_Remove(MyList *list, int value)
 {
     int has = 0;
     for (int i = 0; i < list->count - 1; i++)
@@ -61,11 +61,28 @@ void MyListRemove(MyList *list, int value)
             list->arr[i] = list->arr[list->count - 1];
             list->count -= 1;
             has = 1;
-            break;
+            return;
         }
     }
     if (has == 0)
     {
         printf("There is no %d\n", value);
+    }
+}
+
+int MyList_TryGetvalue(MyList *list, int index)
+{
+    printf("%d\n", list->arr[3]);
+    return list->arr[3];
+    {
+        // printf("the index is null\n");
+    }
+}
+
+void MyList_Foreach(MyList *list)
+{
+    for (int i = 0; i < list->count; i++)
+    {
+        printf("arr%d is:%d\n", i, list->arr[i]);
     }
 }

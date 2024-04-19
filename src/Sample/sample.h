@@ -25,11 +25,14 @@ void SampleEntry()
     // 自定义List
     MyList *list = calloc(1, sizeof(MyList));
     NewMyList(list);
-    MyListAdd(list, 1);
-    MyListAdd(list, 1);
-    MyListAdd(list, 1);
-    MyListAdd(list, 1);
-    MyListAdd(list, 1);
-    MyListRemove(list,5);
+    MyList_Add(list, 1);
+    MyList_Add(list, 2);
+    MyList_Add(list, 3);
+    MyList_Add(list, 4);
+    MyList_Add(list, 5);
+    MyList_Remove(list, 6);
     printf("list's Count is: %d\n", list->count);
+    int a = MyList_TryGetvalue(list, 3);
+    printf("a is : %d\n", a);
+    MyList_Foreach(list);
 }
