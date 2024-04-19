@@ -21,7 +21,7 @@ int main()
     // 数组排序
     int arr[] = {3, 8, 2, 5, 9, 0, 4, 2};
     int len = ARRAYLEN(arr);
-    ArraySortFun1(arr, len);
+    ArraySortFun2(arr, len);
     PrintfArr(arr);
     // InitWindow(600, 600, "hello C World");
 
