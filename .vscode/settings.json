@@ -7,6 +7,22 @@
         "raymath.h": "c",
         "import.h": "c",
         "export.h": "c",
-        "e_export.h": "c"
+        "e_export.h": "c",
+        "bit": "c",
+        "cctype": "c",
+        "climits": "c",
+        "cmath": "c",
+        "compare": "c",
+        "concepts": "c",
+        "cstdarg": "c",
+        "cstdio": "c",
+        "cstdlib": "c",
+        "type_traits": "c",
+        "limits": "c",
+        "new": "c",
+        "*.tcc": "c",
+        "cstdbool": "c",
+        "cstdint": "c",
+        "typeinfo": "c"
     }
 }
