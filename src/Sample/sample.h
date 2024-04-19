@@ -30,5 +30,6 @@ void SampleEntry()
     MyListAdd(list, 1);
     MyListAdd(list, 1);
     MyListAdd(list, 1);
+    MyListRemove(list,1);
     printf("list's Count is: %d\n", list->count);
 }

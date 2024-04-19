@@ -50,3 +50,16 @@ void MyListAdd(MyList *list, int a)
         list->count++;
     }
 }
+
+void MyListRemove(MyList *list, int value)
+{
+    for (int i = 0; list->count - 1; i++)
+    {
+        if (list->arr[i] == value)
+        {
+            list->arr[i] = list->arr[list->count - 1];
+            list->count -= 1;
+            break;
+        }
+    }
+}
