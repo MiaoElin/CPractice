@@ -53,13 +53,19 @@ void MyListAdd(MyList *list, int a)
 
 void MyListRemove(MyList *list, int value)
 {
-    for (int i = 0; list->count - 1; i++)
+    int has = 0;
+    for (int i = 0; i < list->count - 1; i++)
     {
         if (list->arr[i] == value)
         {
             list->arr[i] = list->arr[list->count - 1];
             list->count -= 1;
+            has = 1;
             break;
         }
+    }
+    if (has == 0)
+    {
+        printf("There is no %d\n", value);
     }
 }
