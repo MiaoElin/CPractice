@@ -1,33 +1,9 @@
 #include <stdio.h> // 官方库
-// #include "import.h"
+#include "import.h"
 #include "export.h"
 
 #define ARRAYLEN(arr) (sizeof(arr) / sizeof(arr[0]))
 
-void ArraySortFun1(int *arr, int len)
-{
-    for (int i = 0; i < 8 - 1; i++)
-    {
-        for (int j = i + 1; j < 8; j++)
-        {
-            int temp;
-            if (arr[j] < arr[i])
-            {
-                temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
-            }
-        }
-    }
-}
-
-void PrintfArr(int *arr)
-{
-    for (int i = 0; i < 8; i++)
-    {
-        printf("%d\r\n", arr[i]);
-    }
-}
 
 int main()
 {

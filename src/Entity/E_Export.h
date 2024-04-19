@@ -3,3 +3,5 @@
 #endif
 
 #include "E_Plane.h"
+#include "E_Input.h"
+#include "IntArraySort.h"
