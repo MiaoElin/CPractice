@@ -8,6 +8,11 @@
 
 #define ARRAYLEN(arr) (sizeof(arr) / sizeof(arr[0]))
 
+void MyListForeach_Action(int key, int value)
+{
+    printf("arr%d is:%d\n", key, value);
+}
+
 void SampleEntry()
 {
     // 自定义类
@@ -31,8 +36,8 @@ void SampleEntry()
     MyList_Add(list, 4);
     MyList_Add(list, 5);
     MyList_Remove(list, 6);
-    printf("list's Count is: %d\n", list->count);
+    printf("list's Count is: %d\r\n", list->count);
     int a = MyList_TryGetvalue(list, 3);
-    printf("a is : %d\n", a);
+    printf("a is : %d\r\n", a);
     MyList_Foreach(list);
 }

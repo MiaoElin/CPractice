@@ -72,17 +72,16 @@ void MyList_Remove(MyList *list, int value)
 
 int MyList_TryGetvalue(MyList *list, int index)
 {
-    printf("%d\n", list->arr[3]);
-    return list->arr[3];
-    {
-        // printf("the index is null\n");
-    }
+    return list->arr[index];
 }
+
+extern void MyListForeach_Action(int key, int value);
 
 void MyList_Foreach(MyList *list)
 {
     for (int i = 0; i < list->count; i++)
     {
-        printf("arr%d is:%d\n", i, list->arr[i]);
+        MyListForeach_Action(i,list->arr[i]);
+        // printf("arr%d is:%d\n", i, list->arr[i]);
     }
 }
