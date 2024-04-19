@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "raylib.h": "c"
+        "raylib.h": "c",
+        "test.h": "c",
+        "myvector3.h": "c",
+        "stdio.h": "c",
+        "raymath.h": "c",
+        "import.h": "c",
+        "export.h": "c",
+        "e_export.h": "c"
     }
 }
