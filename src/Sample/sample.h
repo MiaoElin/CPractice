@@ -8,9 +8,9 @@
 
 #define ARRAYLEN(arr) (sizeof(arr) / sizeof(arr[0]))
 
-void MyListForeach_Action(int key, int value)
+void MyListPrintfAll(int index, int value)
 {
-    printf("arr%d is:%d\n", key, value);
+    printf("arr %d is : %d\n", index, value);
 }
 
 void SampleEntry()
@@ -31,13 +31,16 @@ void SampleEntry()
     MyList *list = calloc(1, sizeof(MyList));
     NewMyList(list);
     MyList_Add(list, 1);
+    printf("%d %d \n", list->count, list->arrlen);
     MyList_Add(list, 2);
-    MyList_Add(list, 3);
+    MyList_Add(list, 0);
     MyList_Add(list, 4);
     MyList_Add(list, 5);
-    MyList_Remove(list, 6);
+
+    MyList_Remove(list, 0);
     printf("list's Count is: %d\r\n", list->count);
     int a = MyList_TryGetvalue(list, 3);
     printf("a is : %d\r\n", a);
-    MyList_Foreach(list);
+
+    MyList_Foreach(list,MyListPrintfAll);
 }

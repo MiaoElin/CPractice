@@ -16,39 +16,24 @@ void NewMyList(MyList *MyList)
 {
     MyList->arr = (int *)calloc(4, sizeof(int));
     MyList->arrlen = 4;
+    MyList->count = 0;
 }
 
 void MyList_Add(MyList *list, int a)
 {
-    for (int i = 0; i < list->arrlen; i++)
-    {
-        // int *aa = &(list->arr[i]);
-        // if (aa == NULL)
-        // {
-        //     aa = &a;
-        // }
-        if ((list->arr[i]) == 0)
-        {
-            list->arr[i] = a;
-            list->count++;
-            return;
-        }
-    }
-    if (list->arr[list->arrlen - 1] != 0)
+    if (list->count == list->arrlen)
     {
         // 扩充数组
-        int *newlist = (int *)calloc(list->arrlen * 2, sizeof(int));
+        int *newarr = (int *)calloc(list->arrlen * 2, sizeof(int));
         for (int i = 0; i < list->count; i++)
         {
-            newlist[i] = list->arr[i];
+            newarr[i] = list->arr[i];
         }
-        list->arr = newlist;
+        list->arr = newarr;
         list->arrlen *= 2;
-
-        // 赋值
-        list->arr[list->count] = a;
-        list->count++;
     }
+    list->arr[list->count] = a;
+    list->count += 1;
 }
 
 void MyList_Remove(MyList *list, int value)
@@ -75,13 +60,12 @@ int MyList_TryGetvalue(MyList *list, int index)
     return list->arr[index];
 }
 
-extern void MyListForeach_Action(int key, int value);
 
-void MyList_Foreach(MyList *list)
+void MyList_Foreach(MyList *list, void (*action)(int index, int value))
 {
     for (int i = 0; i < list->count; i++)
     {
-        MyListForeach_Action(i,list->arr[i]);
-        // printf("arr%d is:%d\n", i, list->arr[i]);
+        int a = list->arr[i];
+        action(i, a);
     }
 }
