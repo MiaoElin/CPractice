@@ -3,7 +3,7 @@
 #include "import.h"
 #include "MainContext.h"
 
-// void DrawPlane(E_Plane *value);
+void DrawAllPlane(void *value);
 
 int main()
 {
@@ -36,8 +36,8 @@ int main()
         float x = ctx->input->moveAxis.x;
 
         // 画飞机
-        // List_Foreach(ctx->PlaneRepo->all, DrawPlane);
-        DrawCircleV(player->pos, 50, player->color);
+        List_Foreach(ctx->PlaneRepo->all, DrawAllPlane);
+        // DrawCircleV(player->pos, 50, player->color);
 
         EndDrawing();
     }
@@ -45,7 +45,8 @@ int main()
 
     return 0;
 }
-// void DrawPlane(E_Plane *value)
-// {
-//     DrawCircleV(value->pos, 50, value->color);
-// }
+void DrawAllPlane(void *value)
+{
+    E_Plane *plane = value;
+    DrawCircleV(plane->pos, 50, plane->color);
+}
