@@ -10,8 +10,15 @@ typedef struct E_Input
 
 } E_Input;
 
+E_Input *New_Input()
+{
+    E_Input *input = calloc(1, sizeof(E_Input));
+}
+
 void E_Input_Process(E_Input *input)
 {
+    input->moveAxis.x = 0;
+    input->moveAxis.y = 0;
     if (IsKeyDown(KEY_W))
     {
         input->moveAxis.y = -1;

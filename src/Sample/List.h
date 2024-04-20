@@ -50,7 +50,7 @@ void List_Remove(List *list, void *value)
     }
     if (has == 0)
     {
-        // printf("There is no %d\n", value);
+        printf("There is no %d\n", value);
     }
 }
 
@@ -59,11 +59,11 @@ void *List_TryGetvalue(List *list, int index)
     return list->items[index];
 }
 
-void List_Foreach(List *list, void (*action)(int index, void *value))
+void List_Foreach(List *list, void (*action)(void *plane))
 {
     for (int i = 0; i < list->count; i++)
     {
         void *a = list->items[i];
-        action(i, a);
+        action(a);
     }
 }

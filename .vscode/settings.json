@@ -27,6 +27,8 @@
         "sample.h": "c",
         "mylist.h": "c",
         "planerepo.h": "c",
-        "maincontext.h": "c"
+        "maincontext.h": "c",
+        "e_input.h": "c",
+        "stdlib.h": "c"
     }
 }

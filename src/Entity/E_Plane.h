@@ -2,7 +2,7 @@
 #define E_PLANE_H__
 #endif
 
-#include "E_Import.h"
+// #include "E_Import.h"
 
 typedef struct E_Plane
 {
@@ -12,12 +12,13 @@ typedef struct E_Plane
     float speed;
 } E_Plane;
 
-E_Plane *NewPlane(Vector2 pos, float speed, Color color)
+E_Plane *NewPlane(Vector2 pos, float speed, Color color, int id)
 {
     E_Plane *plane = calloc(1, sizeof(E_Plane));
     plane->pos = pos;
     plane->color = color;
     plane->speed = speed;
+    plane->id = id;
     return plane;
 }
 

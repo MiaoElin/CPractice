@@ -14,10 +14,8 @@ typedef struct MainContext
 
 MainContext *New_MainContext()
 {
-    E_Input *input = calloc(1, sizeof(E_Input));
-    PlaneRepo *planeRepo = calloc(1, sizeof(planeRepo));
     MainContext *ctx = calloc(1, sizeof(MainContext));
-    ctx->input = input;
-    ctx->PlaneRepo = planeRepo;
+    ctx->input = New_Input();
+    ctx->PlaneRepo = New_PlaneRepo();
     return ctx;
 }
