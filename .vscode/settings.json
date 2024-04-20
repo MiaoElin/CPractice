@@ -23,6 +23,10 @@
         "*.tcc": "c",
         "cstdbool": "c",
         "cstdint": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "sample.h": "c",
+        "mylist.h": "c",
+        "planerepo.h": "c",
+        "maincontext.h": "c"
     }
 }

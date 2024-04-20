@@ -27,20 +27,20 @@ void SampleEntry()
     ArraySortFun2(arr, len);
     PrintfArr(arr);
 
-    // 自定义List
-    MyList *list = calloc(1, sizeof(MyList));
-    NewMyList(list);
-    MyList_Add(list, 1);
-    printf("%d %d \n", list->count, list->arrlen);
-    MyList_Add(list, 2);
-    MyList_Add(list, 0);
-    MyList_Add(list, 4);
-    MyList_Add(list, 5);
+    // // 自定义List
+    // MyList *list = calloc(1, sizeof(MyList));
+    // NewMyList(list);
+    // MyList_Add(list, 1);
+    // printf("%d %d \n", list->count, list->arrlen);
+    // MyList_Add(list, 2);
+    // MyList_Add(list, 0);
+    // MyList_Add(list, 4);
+    // MyList_Add(list, 5);
 
-    MyList_Remove(list, 0);
-    printf("list's Count is: %d\r\n", list->count);
-    int a = MyList_TryGetvalue(list, 3);
-    printf("a is : %d\r\n", a);
+    // MyList_Remove(list, 0);
+    // printf("list's Count is: %d\r\n", list->count);
+    // int a = MyList_TryGetvalue(list, 3);
+    // printf("a is : %d\r\n", a);
 
-    MyList_Foreach(list,MyListPrintfAll);
+    // MyList_Foreach(list,MyListPrintfAll);
 }

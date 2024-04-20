@@ -12,6 +12,15 @@ typedef struct E_Plane
     float speed;
 } E_Plane;
 
+E_Plane *NewPlane(Vector2 pos, float speed, Color color)
+{
+    E_Plane *plane = calloc(1, sizeof(E_Plane));
+    plane->pos = pos;
+    plane->color = color;
+    plane->speed = speed;
+    return plane;
+}
+
 void PlaneMove(E_Plane *plane, Vector2 moveAxis, float dt)
 {
     // 归一化

@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 
-typedef struct MysList
+typedef struct MyList
 {
     int *arr;
     int arrlen;
