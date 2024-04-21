@@ -36,6 +36,7 @@
         "gamecontext.h": "c",
         "e_plane.h": "c",
         "gamebusiness.h": "c",
-        "planedomain.h": "c"
+        "planedomain.h": "c",
+        "assert.h": "c"
     }
 }

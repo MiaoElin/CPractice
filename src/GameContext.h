@@ -6,20 +6,24 @@
 
 typedef struct GameContext
 {
-    PlaneRepo *PlaneRepo;
+    PlaneRepo *planeRepo;
     E_Input *input;
     int playerID;
     GameStatus status;
+    float waveTimer;
+    float interval;
 } GameContext;
 
-GameContext *New_GameContext()
+GameContext *GameContext_New()
 {
     GameContext *ctx = calloc(1, sizeof(GameContext));
-    ctx->PlaneRepo = New_PlaneRepo();
+    ctx->planeRepo = PlaneRepo_New();
+    ctx->waveTimer = 0;
+    ctx->interval = 1;
     return ctx;
 }
 
-E_Plane *Get_Player(GameContext *ctx)
-{
-    return List_TryGetvalue(ctx->PlaneRepo->all, ctx->playerID);
-}
+// E_Plane *Get_Player(GameContext *ctx)
+// {
+//     return List_TryGetvalue(ctx->planeRepo->all, ctx->playerID);
+// }

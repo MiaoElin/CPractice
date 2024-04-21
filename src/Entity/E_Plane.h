@@ -4,8 +4,8 @@
 
 #include "../Enum./MoveType.h"
 #include "E_import.h"
-typedef struct E_Plane
-{
+
+typedef struct E_Plane {
     Vector2 pos;
     int id;
     Color color;
@@ -13,18 +13,16 @@ typedef struct E_Plane
     Movetype movetype;
 } E_Plane;
 
-E_Plane *New_Plane(Vector2 pos, float speed, Color color,Movetype movetype)
-{
+E_Plane *New_Plane(Vector2 pos, float speed, Color color, Movetype movetype) {
     E_Plane *plane = calloc(1, sizeof(E_Plane));
     plane->pos = pos;
     plane->color = color;
     plane->speed = speed;
-    plane->movetype=movetype;
+    plane->movetype = movetype;
     return plane;
 }
 
-void Plane_Move(E_Plane *plane, Vector2 moveAxis, float dt)
-{
+void Plane_Move(E_Plane *plane, Vector2 moveAxis, float dt) {
     // 归一化
     moveAxis = Vector2Normalize(moveAxis);
     // 向量乘以float

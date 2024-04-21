@@ -2,10 +2,9 @@
 #define MOVETYPE_H__
 #endif
 
-
-typedef enum 
+typedef enum
 {
     MoveTypeNone,
     ByInput,
     ByAI
-}Movetype;
+} Movetype;
