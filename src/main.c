@@ -1,7 +1,6 @@
 #include <stdio.h> // 官方库
 #include <stdlib.h>
-#include "import.h"
-#include "MainContext.h"
+#include "GameBusiness.h"
 
 void DrawAllPlane(void *value);
 
@@ -13,12 +12,8 @@ int main()
     InitWindow(600, 600, "hello C World");
 
     MainContext *ctx = New_MainContext();
-    // 生成飞机
-    Vector2 playerPos = {300, 500};
-    E_Plane *player = NewPlane(playerPos, 100, BLUE, ctx->PlaneRepo->idRecord);
-    ctx->PlaneRepo->idRecord++;
-    ctx->playerID = player->id;
-    List_Add(ctx->PlaneRepo->all, player);
+
+    Game_Enter(ctx->gameCtx);
 
     while (!WindowShouldClose())
     {
@@ -29,14 +24,12 @@ int main()
 
         BeginDrawing();
         ClearBackground(WHITE);
+
         // Tick
-
-        // 移动飞机
-        PlaneMove(player, ctx->input->moveAxis, dt);
-        float x = ctx->input->moveAxis.x;
-
+        GameBusiness_Tick(ctx->gameCtx, dt);
+        
         // 画飞机
-        List_Foreach(ctx->PlaneRepo->all, DrawAllPlane);
+        List_Foreach(ctx->gameCtx->PlaneRepo->all, DrawAllPlane);
         // DrawCircleV(player->pos, 50, player->color);
 
         EndDrawing();
@@ -45,8 +38,9 @@ int main()
 
     return 0;
 }
+
 void DrawAllPlane(void *value)
 {
     E_Plane *plane = value;
-    DrawCircleV(plane->pos, 50, plane->color);
+    DrawCircleV(plane->pos, 20, plane->color);
 }

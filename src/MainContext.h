@@ -2,13 +2,12 @@
 #define MAINCONTEXT_H__
 #endif
 
-#include "export.h"
+#include "GameContext.h"
 
 typedef struct MainContext
 {
     E_Input *input;
-    PlaneRepo *PlaneRepo;
-    int playerID;
+    GameContext *gameCtx;
 
 } MainContext;
 
@@ -16,6 +15,7 @@ MainContext *New_MainContext()
 {
     MainContext *ctx = calloc(1, sizeof(MainContext));
     ctx->input = New_Input();
-    ctx->PlaneRepo = New_PlaneRepo();
+    ctx->gameCtx = New_GameContext();
+    ctx->gameCtx->input = ctx->input;
     return ctx;
 }

@@ -2,7 +2,7 @@
 #define E_INPUT_H__
 #endif
 
-#include "E_Import.h"
+#include "E_import.h"
 
 typedef struct E_Input
 {
@@ -13,6 +13,7 @@ typedef struct E_Input
 E_Input *New_Input()
 {
     E_Input *input = calloc(1, sizeof(E_Input));
+    return input;
 }
 
 void E_Input_Process(E_Input *input)

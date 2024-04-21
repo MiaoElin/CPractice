@@ -29,6 +29,13 @@
         "planerepo.h": "c",
         "maincontext.h": "c",
         "e_input.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "e_import.h": "c",
+        "gamestatus.h": "c",
+        "movetype.h": "c",
+        "gamecontext.h": "c",
+        "e_plane.h": "c",
+        "gamebusiness.h": "c",
+        "planedomain.h": "c"
     }
 }
