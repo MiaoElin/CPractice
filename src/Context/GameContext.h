@@ -2,10 +2,9 @@
 #define GAMECONTEXT_H__
 #endif
 
-#include "export.h"
+#include "../export.h"
 
-typedef struct GameContext
-{
+typedef struct GameContext {
     PlaneRepo *planeRepo;
     E_Input *input;
     int playerID;
@@ -14,8 +13,7 @@ typedef struct GameContext
     float interval;
 } GameContext;
 
-GameContext *GameContext_New()
-{
+GameContext *GameContext_New() {
     GameContext *ctx = calloc(1, sizeof(GameContext));
     ctx->planeRepo = PlaneRepo_New();
     ctx->waveTimer = 0;
@@ -27,3 +25,8 @@ GameContext *GameContext_New()
 // {
 //     return List_TryGetvalue(ctx->planeRepo->all, ctx->playerID);
 // }
+
+void GameContext_Free(GameContext *ctx) {
+    PlaneRepo_Free(ctx->planeRepo);
+    free(ctx);
+}

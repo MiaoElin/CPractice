@@ -4,7 +4,7 @@
 
 #include <assert.h>
 
-#include "PlaneDomain.h"
+#include "../Domain/PlaneDomain.h"
 
 typedef struct GameBusiness {
 
@@ -29,7 +29,7 @@ void GameBusiness_Tick(GameContext *ctx, float dt) {
     *timer += dt;
     if (*timer >= *interval) {
         *timer = 0;
-        Vector2 newPos = PF_GetRDVector2(100, 100);
+        Vector2 newPos = PF_GetRDVector2(600, 100);
         E_Plane *p = PlaneDomain_Spawn(ctx, newPos, 100, BLACK, ByAI);
         assert(p != NULL);
     }
@@ -44,4 +44,5 @@ void GameBusiness_Tick(GameContext *ctx, float dt) {
             PlaneDoMain_Move(ctx, plane, dt);
         }
     }
+    
 }

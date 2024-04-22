@@ -14,7 +14,7 @@ typedef struct List {
 List *List_New(size_t size) {
     List *list = (List *)calloc(1, sizeof(List));
     list->items = (void **)calloc(4, sizeof(void *));
-    list->size = size;
+    // list->size = size;
     list->arrlen = 4;
     list->count = 0;
     return list;
@@ -33,7 +33,7 @@ void List_Add(List *list, void *value) {
     if (list->count == list->arrlen) {
         // 扩充数组
         list->arrlen *= 2;
-        list->items = realloc(list->items, list->size * list->arrlen);
+        list->items = realloc(list->items, sizeof(void *) * list->arrlen);
         // void **newItems = malloc(list->arrlen * list->size);
         // for (int i = 0; i < list->count; i += 1) {
         //     newItems[i] = list->items[i];

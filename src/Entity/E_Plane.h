@@ -30,3 +30,7 @@ void Plane_Move(E_Plane *plane, Vector2 moveAxis, float dt) {
     // 向量相加,得到新方向
     plane->pos = Vector2Add(plane->pos, dir);
 }
+
+void Plane_Free(void *plane) {
+    free(plane);
+}

@@ -2,7 +2,7 @@
 #define PLANEDOMAIN_H__
 #endif
 
-#include "MainContext.h"
+#include "../Context/MainContext.h"
 
 // 生成飞机
 E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Color color, Movetype movetype) {
@@ -11,7 +11,7 @@ E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Color col
     assert(plane != NULL);
     plane->id = ctx->planeRepo->idRecord++;
     PlaneRepo_Add(ctx->planeRepo, (void*)plane);
-    // printf("repo arrcount is : %d\r\n", ctx->planeRepo->all->count);
+    printf("repo arrcount is : %d\r\n", ctx->planeRepo->all->arrlen);
     return plane;
 }
 

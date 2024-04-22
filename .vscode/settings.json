@@ -37,6 +37,8 @@
         "e_plane.h": "c",
         "gamebusiness.h": "c",
         "planedomain.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "list.h": "c",
+        "repo_export.h": "c"
     }
 }

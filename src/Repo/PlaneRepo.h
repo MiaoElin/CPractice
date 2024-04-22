@@ -2,7 +2,7 @@
 #define PLANEREPO_H__
 #endif
 
-#include "Sample/List.h"
+#include "../List.h"
 
 typedef struct PlaneRepo {
     List *all;
@@ -18,10 +18,6 @@ PlaneRepo *PlaneRepo_New() {
     return planeRepo;
 }
 
-void PlaneRepo_Free(PlaneRepo *pRepo) {
-    free(pRepo->all);
-}
-
 void PlaneRepo_Add(PlaneRepo *repo, E_Plane *plane) {
     List_Add(repo->all, plane);
 }
@@ -31,4 +27,9 @@ E_Plane *PlaneRepo_Find(PlaneRepo *repo, int id) {
         //
     }
     return NULL;
+}
+
+void PlaneRepo_Free(PlaneRepo *pRepo) {
+    List_Free(pRepo->all);
+    free(pRepo);
 }

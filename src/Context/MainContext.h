@@ -18,7 +18,7 @@ MainContext *New_MainContext() {
 }
 
 void MainCtx_Free(MainContext *ctx) {
-    // E_Input_Free(ctx->input);
-    // GameContext_Free(ctx->gameCtx);
+    E_Input_Free(ctx->input);
+    GameContext_Free(ctx->gameCtx);
     free(ctx);
 }
