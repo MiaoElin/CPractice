@@ -2,3 +2,9 @@
 √ 2. 定义一个IntList结构体，内部用int数组实现类似C# 的List的功能
   3. 生成小敌方和我方小飞机，发射子弹、击中。游戏胜负
   4. 登录UI、游戏界面UI（显示生命值就好）、游戏胜负UI
+  5. Dictionary key为任意类型的情况
+
+
+  gcc e:\project\Clan\build.c -o e:\project\Clan\build.exe
+build.exe e:\project\Clan\src e:\project\Clan\bin
+gcc e:\project\Clan\bin\*.o -o e:\project\Clan\bin\main.exe
