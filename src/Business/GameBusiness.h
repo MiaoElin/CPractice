@@ -37,12 +37,11 @@ void GameBusiness_Tick(GameContext *ctx, float dt) {
     // 移动
     if (ctx->status == Ingame) {
         for (int i = 0; i < ctx->planeRepo->all->count; i++) {
-            E_Plane *plane = (E_Plane *)ctx->planeRepo->all->items[i];
+            E_Plane *plane = (E_Plane *)ctx->planeRepo->all->value[i];
             // const char *txt = TextFormat("i%d\r\n", i);
             // printf(txt);
             assert(plane != NULL);
             PlaneDoMain_Move(ctx, plane, dt);
         }
     }
-    
 }

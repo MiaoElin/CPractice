@@ -2,6 +2,7 @@
 #define LIST_H__
 #endif
 
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct List {
@@ -33,6 +34,7 @@ void List_Add(List *list, void *value) {
     if (list->count == list->arrlen) {
         // 扩充数组
         list->arrlen *= 2;
+        // realloc：在原内存大小的基础上，扩大至第二个参数的大小（每个元素的size*元素数量：sizeof（指针）*arrlen）
         list->items = realloc(list->items, sizeof(void *) * list->arrlen);
         // void **newItems = malloc(list->arrlen * list->size);
         // for (int i = 0; i < list->count; i += 1) {

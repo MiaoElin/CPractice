@@ -31,8 +31,10 @@ int main() {
         ClearBackground(WHITE);
 
         // 画飞机
-        List_Foreach(ctx->gameCtx->planeRepo->all, DrawAllPlane);
+        DictionaryByarr_Foreach(ctx->gameCtx->planeRepo->all, DrawAllPlane);
         // DrawCircleV(player->pos, 50, player->color);
+
+            
 
         EndDrawing();
     }
@@ -40,7 +42,7 @@ int main() {
 
     // GC
     // 销毁飞机？todo
-    List_Foreach(ctx->gameCtx->planeRepo->all, Plane_Free);
+    DictionaryByarr_Foreach(ctx->gameCtx->planeRepo->all, Plane_Free);
     MainCtx_Free(ctx);
 
     return 0;
