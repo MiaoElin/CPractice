@@ -32,7 +32,7 @@ int main() {
         int planeCount = PlaneRepo_TakeAll(ctx->gameCtx->planeRepo, all);
         for (size_t i = 0; i < planeCount; i++) {
             E_Plane *plane = (E_Plane *)all[i];
-            DrawTextureV(plane->texture, plane->pos, WHITE);
+            Plane_Draw(plane);
         }
         EndDrawing();
     }

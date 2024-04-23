@@ -6,7 +6,7 @@
 
 typedef struct E_Input {
     Vector2 moveAxis;
-
+    bool isShootBul;
 } E_Input;
 
 E_Input *E_Input_New() {
@@ -29,4 +29,6 @@ void E_Input_Process(E_Input *input) {
     } else if (IsKeyDown(KEY_D)) {
         input->moveAxis.x = 1;
     }
+
+    input->isShootBul = IsKeyDown(KEY_SPACE);
 }

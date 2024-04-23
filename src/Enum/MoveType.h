@@ -6,5 +6,7 @@ typedef enum
 {
     MoveTypeNone,
     ByInput,
-    ByAI
+    ByTrack,
+    ByLine,
+    ByStatick
 } Movetype;

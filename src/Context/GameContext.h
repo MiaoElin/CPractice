@@ -6,14 +6,18 @@
 #include "AssetContext.h"
 
 typedef struct GameContext {
-    PlaneRepo *planeRepo;
     E_Input *input;
     AssetContext *assetCtx;
-    
-    int playerID;
     GameStatus status;
+
+    // Plane
+    PlaneRepo *planeRepo;
+    int playerID;
     float waveTimer;
     float interval;
+
+    // Bullet
+    BulletRepo *bulletRepo;
 } GameContext;
 
 GameContext *GameContext_New() {
@@ -21,6 +25,7 @@ GameContext *GameContext_New() {
     ctx->planeRepo = PlaneRepo_New();
     ctx->waveTimer = 0;
     ctx->interval = 2;
+    ctx->bulletRepo = BulletRepo_New();
     return ctx;
 }
 
@@ -36,5 +41,6 @@ E_Plane *GameContext_GetPlayer(GameContext *ctx) {
 
 void GameContext_Free(GameContext *ctx) {
     PlaneRepo_Free(ctx->planeRepo);
+    BulletRepo_Free(ctx->bulletRepo);
     free(ctx);
 }

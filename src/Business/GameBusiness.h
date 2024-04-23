@@ -5,6 +5,7 @@
 #include <assert.h>
 
 #include "../Domain/PlaneDomain.h"
+#include "../Domain/BulletDomain.h"
 
 typedef struct GameBusiness {
 
@@ -13,8 +14,8 @@ typedef struct GameBusiness {
 void Game_Enter(GameContext *ctx) {
     // 生成Player
     Vector2 playerPos = {300, 500};
-
-    E_Plane *player = PlaneDomain_Spawn(ctx, playerPos, 100, ctx->assetCtx->player1, ByInput);
+    Vector2 faceDir = {0, -1};
+    E_Plane *player = PlaneDomain_Spawn(ctx, playerPos, 100, ctx->assetCtx->player1, ByInput, Player, faceDir, 0.2f);
 
     ctx->playerID = player->id;
 
@@ -24,14 +25,15 @@ void Game_Enter(GameContext *ctx) {
 
 void GameBusiness_Tick(GameContext *ctx, float dt) {
     // 生成敌人
-    float *timer = &ctx->waveTimer;
-    float *interval = &ctx->interval;
+    float timer = ctx->waveTimer;
+    float interval = ctx->interval;
 
-    *timer += dt;
-    if (*timer >= *interval) {
-        *timer = 0;
+    timer += dt;
+    if (timer >= interval) {
+        timer = 0;
         Vector2 newPos = PF_GetRDVector2(600, 100);
-        E_Plane *p = PlaneDomain_Spawn(ctx, newPos, 50, ctx->assetCtx->enemy1, ByAI);
+        Vector2 faceDir = {0, 1};
+        E_Plane *p = PlaneDomain_Spawn(ctx, newPos, 50, ctx->assetCtx->enemy1, ByTrack, Enemy, faceDir, 0.6f);
         assert(p != NULL);
     }
 
@@ -39,7 +41,7 @@ void GameBusiness_Tick(GameContext *ctx, float dt) {
     E_Plane *player = GameContext_GetPlayer(ctx);
     // PlaneDoMain_Move(ctx, player, dt);
 
-    // 移动
+    // 飞机移动
     void *all[1024];
     int count = PlaneRepo_TakeAll(ctx->planeRepo, all);
     // int planeCount = PlaneRepo_GetCount(ctx->planeRepo);
@@ -51,6 +53,7 @@ void GameBusiness_Tick(GameContext *ctx, float dt) {
             // printf(txt);
             // assert(plane != NULL);
             PlaneDoMain_Move(ctx, plane, dt);
+            // BulletDomain_Spawn(ctx, )
         }
     }
 }
