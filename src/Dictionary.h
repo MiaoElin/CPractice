@@ -5,22 +5,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct DictionaryEntry {
+typedef struct Dictionary Dictionary;
+typedef struct DictionaryEntry DictionaryEntry;
+
+struct DictionaryEntry {
 
     long key;
     void *value;
     bool isExists;
     DictionaryEntry *next; // 某个数据的地址
+};
 
-} DictionaryEntry;
-
-typedef struct Dictionary {
+struct Dictionary {
 
     DictionaryEntry *all; // 数组的地址
     int capacity;
     int count;
-
-} Dictionary;
+};
 
 Dictionary *Dictionary_New(int capacity) {
     Dictionary *dic = (Dictionary *)calloc(1, sizeof(Dictionary));
@@ -73,19 +74,20 @@ bool Dictionary_TryAdd(Dictionary *dic, long key, void *value) {
     return true;
 }
 
-bool Dictionary_Tryget(Dictionary *dic, long key, void **value) {
+bool Dictionary_TryGetValue(Dictionary *dic, long key, void **value) {
+    // void *value;
     int index = key % dic->capacity;
     DictionaryEntry *entry = &dic->all[index];
     if (!entry->isExists) {
         printf("there is no this Key");
         return false;
     }
-    while (entry!=NULL) {
+    while (entry != NULL) {
         if (entry->key == key) {
             *value = entry->value;
             return true;
         }
-        entry=entry->next;
+        entry = entry->next;
     }
     return false;
 }
@@ -120,4 +122,26 @@ bool Dictionary_TryRemove(Dictionary *dic, long key) {
         entry = entry->next;
     } while (entry != NULL);
     return false;
+}
+
+void **Dictionary_GetAllValue(Dictionary *dic) {
+    void **arr = calloc(dic->count, sizeof(void *));
+    int arrCount = 0;
+    for (int i = 0; i < dic->count; i++) {
+        // 找到第一个entry
+        DictionaryEntry *entry = &dic->all[i];
+        // 如果不存在，说明当前入口没有数据
+        if (!entry->isExists) {
+            continue;
+        }
+        // 存在数据
+        while (entry->isExists) {
+            // 存储数据
+            arr[arrCount] = entry->value;
+            arrCount++;
+            // 找下一个
+            entry = entry->next;
+        }
+    }
+    return arr;
 }

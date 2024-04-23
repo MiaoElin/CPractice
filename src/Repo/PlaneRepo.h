@@ -2,31 +2,39 @@
 #define PLANEREPO_H__
 #endif
 
-#include "../DictionaryByarr.h"
+#include "../Dictionary.h"
 
 typedef struct PlaneRepo {
-    DictionaryByarr *all;
+    Dictionary *all;
     int idRecord;
 
 } PlaneRepo;
 
 PlaneRepo *PlaneRepo_New() {
     PlaneRepo *planeRepo = calloc(1, sizeof(PlaneRepo));
-    DictionaryByarr *all = DictionaryByarr_New(sizeof(E_Plane));
+    Dictionary *all = Dictionary_New(1000);
     planeRepo->all = all;
     planeRepo->idRecord = 0;
     return planeRepo;
 }
 
 void PlaneRepo_Add(PlaneRepo *repo, E_Plane *plane) {
-    DictionaryByarr_Add(repo->all, &(plane->id), plane);
+    Dictionary_TryAdd(repo->all, (long)(plane->id), plane);
 }
 
-E_Plane *PlaneRepo_Find(PlaneRepo *repo, int id) {
-    return DictionaryByarr_TryGetValue(repo->all, &id);
+bool PlaneRepo_Find(PlaneRepo *repo, int id,void**value) {
+    return Dictionary_TryGetValue(repo->all, (long)id, value);
 }
 
-void PlaneRepo_Free(PlaneRepo *pRepo) {
-    DictionaryByarr_Free(pRepo->all);
-    free(pRepo);
+void PlaneRepo_Free(PlaneRepo *repo) {
+    Dictionary_Free(repo->all);
+    free(repo);
+}
+
+void **PlaneRepo_TakeAll(PlaneRepo *repo) {
+    return Dictionary_GetAllValue(repo->all);
+}
+
+int PlaneRepo_GetCount(PlaneRepo *repo) {
+    return repo->all->count;
 }

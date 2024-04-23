@@ -2,6 +2,9 @@
 #define DICTIONARYBYARR_H__
 #endif
 
+#include <stdlib.h>
+#include <stdio.h>
+
 typedef struct DictionaryByarr {
 
     void **key;

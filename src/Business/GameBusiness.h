@@ -34,14 +34,23 @@ void GameBusiness_Tick(GameContext *ctx, float dt) {
         assert(p != NULL);
     }
 
+    // player
+    E_Plane *player = GameContext_GetPlayer(ctx);
+    DrawCircleV(player->pos, 50, player->color);
+    PlaneDoMain_Move(ctx, player, dt);
+
     // 移动
-    if (ctx->status == Ingame) {
-        for (int i = 0; i < ctx->planeRepo->all->count; i++) {
-            E_Plane *plane = (E_Plane *)ctx->planeRepo->all->value[i];
-            // const char *txt = TextFormat("i%d\r\n", i);
-            // printf(txt);
-            assert(plane != NULL);
-            PlaneDoMain_Move(ctx, plane, dt);
-        }
-    }
+    // E_Plane *all = (E_Plane *)PlaneRepo_TakeAll(ctx->planeRepo);
+    // int planeCount = PlaneRepo_GetCount(ctx->planeRepo);
+    // printf("%d\r\n", planeCount);
+    // if (ctx->status == Ingame) {
+    //     for (int i = 0; i < ctx->planeRepo->all->count; i++) {
+    //         E_Plane *plane = &all[i];
+    //         // const char *txt = TextFormat("i%d\r\n", i);
+    //         // printf(txt);
+    //         // assert(plane != NULL);
+    //         PlaneDoMain_Move(ctx, plane, dt);
+    //     }
+    // }
+    // free(all);
 }

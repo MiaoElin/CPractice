@@ -25,24 +25,27 @@ int main() {
 
         // Tick
         E_Input_Process(ctx->input);
-        GameBusiness_Tick(ctx->gameCtx, dt);
 
         BeginDrawing();
         ClearBackground(WHITE);
 
+        GameBusiness_Tick(ctx->gameCtx, dt);
+
         // 画飞机
-        DictionaryByarr_Foreach(ctx->gameCtx->planeRepo->all, DrawAllPlane);
-        // DrawCircleV(player->pos, 50, player->color);
 
-            
-
+        // E_Plane *all = (E_Plane *)PlaneRepo_TakeAll(ctx->gameCtx->planeRepo);
+        // int planeCount = PlaneRepo_GetCoutn(ctx->gameCtx->planeRepo);
+        // for (size_t i = 0; i < planeCount; i++) {
+        //     E_Plane *plane = &all[i];
+        //     DrawCircleV(plane->pos, 50, plane->color);
+        // }
         EndDrawing();
     }
     CloseWindow();
 
     // GC
     // 销毁飞机？todo
-    DictionaryByarr_Foreach(ctx->gameCtx->planeRepo->all, Plane_Free);
+    // DictionaryByarr_Foreach(ctx->gameCtx->planeRepo->all, Plane_Free);
     MainCtx_Free(ctx);
 
     return 0;

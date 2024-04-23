@@ -21,10 +21,12 @@ GameContext *GameContext_New() {
     return ctx;
 }
 
-// E_Plane *Get_Player(GameContext *ctx)
-// {
-//     return List_TryGetvalue(ctx->planeRepo->all, ctx->playerID);
-// }
+E_Plane *GameContext_GetPlayer(GameContext *ctx) {
+    void *value;
+    PlaneRepo_Find(ctx->planeRepo, ctx->playerID, &value);
+    E_Plane *player = (E_Plane *)&value;
+    return player;
+}
 
 void GameContext_Free(GameContext *ctx) {
     PlaneRepo_Free(ctx->planeRepo);

@@ -11,7 +11,7 @@ E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Color col
     assert(plane != NULL);
     plane->id = ctx->planeRepo->idRecord++;
     PlaneRepo_Add(ctx->planeRepo, (void*)plane);
-    printf("repo arrcount is : %d\r\n", ctx->planeRepo->all->arrLen);
+    // printf("repo arrcount is : %d\r\n", ctx->planeRepo->all->capacity);
     return plane;
 }
 
