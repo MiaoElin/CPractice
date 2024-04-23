@@ -17,7 +17,6 @@ struct DictionaryEntry {
 };
 
 struct Dictionary {
-
     DictionaryEntry *all; // 数组的地址
     int capacity;
     int count;
@@ -25,7 +24,7 @@ struct Dictionary {
 
 Dictionary *Dictionary_New(int capacity) {
     Dictionary *dic = (Dictionary *)calloc(1, sizeof(Dictionary));
-    dic->all = (DictionaryEntry *)calloc(capacity, sizeof(DictionaryEntry *));
+    dic->all = (DictionaryEntry *)calloc(capacity, sizeof(DictionaryEntry));
     dic->capacity = capacity;
     dic->count = 0;
     return dic;
@@ -52,8 +51,8 @@ bool Dictionary_TryAdd(Dictionary *dic, long key, void *value) {
         dic->count++;
         return true;
     }
-    // 这个entry有数据，且它的下个也有数据
-    while (entry->next->isExists) {
+    // 这个entry有数据，且它的下个也有数据 NUL
+    while (entry->next != NULL) {
         // 这个entry的key重复了。直接退出，存储失败
         if (entry->key == key) {
             printf("the key is exists");
@@ -62,6 +61,7 @@ bool Dictionary_TryAdd(Dictionary *dic, long key, void *value) {
         // 获取下一个entry
         entry = entry->next;
     }
+    assert(entry != NULL);
     // 直到entry的下一个没数据
     // 创建一个新的entry,开一个内存区域
     DictionaryEntry *newEntry = (DictionaryEntry *)malloc(sizeof(DictionaryEntry));
@@ -124,24 +124,26 @@ bool Dictionary_TryRemove(Dictionary *dic, long key) {
     return false;
 }
 
-void **Dictionary_GetAllValue(Dictionary *dic) {
-    void **arr = calloc(dic->count, sizeof(void *));
+int Dictionary_GetAllValue(Dictionary *dic, void **arr) {
     int arrCount = 0;
-    for (int i = 0; i < dic->count; i++) {
+    for (int i = 0; i < dic->capacity; i++) {
         // 找到第一个entry
         DictionaryEntry *entry = &dic->all[i];
+        assert(entry != NULL);
         // 如果不存在，说明当前入口没有数据
         if (!entry->isExists) {
             continue;
         }
-        // 存在数据
-        while (entry->isExists) {
+        // 存在数据 NULL.xxx
+        while (entry != NULL) {
             // 存储数据
+            assert(arrCount < dic->count);
+            assert(entry->value != NULL);
             arr[arrCount] = entry->value;
             arrCount++;
             // 找下一个
             entry = entry->next;
         }
     }
-    return arr;
+    return arrCount;
 }

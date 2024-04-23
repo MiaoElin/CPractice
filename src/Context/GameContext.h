@@ -23,8 +23,11 @@ GameContext *GameContext_New() {
 
 E_Plane *GameContext_GetPlayer(GameContext *ctx) {
     void *value;
-    PlaneRepo_Find(ctx->planeRepo, ctx->playerID, &value);
-    E_Plane *player = (E_Plane *)&value;
+    bool has = PlaneRepo_Find(ctx->planeRepo, ctx->playerID, &value);
+    if (!has) {
+        return NULL;
+    }
+    E_Plane *player = (E_Plane *)value;
     return player;
 }
 

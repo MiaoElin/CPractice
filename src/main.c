@@ -32,13 +32,12 @@ int main() {
         GameBusiness_Tick(ctx->gameCtx, dt);
 
         // 画飞机
-
-        // E_Plane *all = (E_Plane *)PlaneRepo_TakeAll(ctx->gameCtx->planeRepo);
-        // int planeCount = PlaneRepo_GetCoutn(ctx->gameCtx->planeRepo);
-        // for (size_t i = 0; i < planeCount; i++) {
-        //     E_Plane *plane = &all[i];
-        //     DrawCircleV(plane->pos, 50, plane->color);
-        // }
+        void *all[1024];
+        int planeCount = PlaneRepo_TakeAll(ctx->gameCtx->planeRepo, all);
+        for (size_t i = 0; i < planeCount; i++) {
+            E_Plane *plane = (E_Plane *)all[i];
+            DrawCircleV(plane->pos,20, plane->color);
+        }
         EndDrawing();
     }
     CloseWindow();
