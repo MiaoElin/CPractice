@@ -5,13 +5,13 @@
 #include "../Context/MainContext.h"
 
 // 生成飞机
-E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Color color, Movetype movetype) {
+E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Texture2D texture, Movetype movetype) {
     // printf("before repo arrlen is : %d\n", ctx->planeRepo->all->count);
-    E_Plane *plane = New_Plane(pos, speed, color, movetype);
+    E_Plane *plane = New_Plane(pos, speed, texture, movetype);
     assert(plane != NULL);
     plane->id = ctx->planeRepo->idRecord++;
-    PlaneRepo_Add(ctx->planeRepo, (void*)plane);
-    printf("repo arrcount is : %d\r\n", ctx->planeRepo->all->count);
+    PlaneRepo_Add(ctx->planeRepo, (void *)plane);
+    // printf("repo arrcount is : %d\r\n", ctx->planeRepo->all->count);
     return plane;
 }
 
@@ -20,6 +20,8 @@ void PlaneDoMain_Move(GameContext *ctx, E_Plane *plane, float dt) {
     if (plane->movetype == ByInput) {
         Plane_Move(plane, ctx->input->moveAxis, dt);
     } else if (plane->movetype == ByAI) {
-        // todo
+        E_Plane *player = GameContext_GetPlayer(ctx);
+        Vector2 dir = Vector2Subtract(player->pos, plane->pos);
+        Plane_Move(plane, dir, dt);
     }
 }

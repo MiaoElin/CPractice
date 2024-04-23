@@ -8,15 +8,15 @@
 typedef struct E_Plane {
     Vector2 pos;
     int id;
-    Color color;
+    Texture2D texture;
     float speed;
     Movetype movetype;
 } E_Plane;
 
-E_Plane *New_Plane(Vector2 pos, float speed, Color color, Movetype movetype) {
+E_Plane *New_Plane(Vector2 pos, float speed,Texture2D texture , Movetype movetype) {
     E_Plane *plane = calloc(1, sizeof(E_Plane));
     plane->pos = pos;
-    plane->color = color;
+    plane->texture = texture;
     plane->speed = speed;
     plane->movetype = movetype;
     return plane;

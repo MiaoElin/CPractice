@@ -12,11 +12,8 @@ int main() {
     // SampleEntry();
     InitWindow(600, 600, "hello C World");
 
-    // printf("1.%d\\r\n",sizeof(void*))
-
     MainContext *ctx = New_MainContext();
     assert(ctx != NULL);
-
     Game_Enter(ctx->gameCtx);
 
     while (!WindowShouldClose()) {
@@ -25,7 +22,6 @@ int main() {
 
         // Tick
         E_Input_Process(ctx->input);
-
         BeginDrawing();
         ClearBackground(WHITE);
 
@@ -36,7 +32,7 @@ int main() {
         int planeCount = PlaneRepo_TakeAll(ctx->gameCtx->planeRepo, all);
         for (size_t i = 0; i < planeCount; i++) {
             E_Plane *plane = (E_Plane *)all[i];
-            DrawCircleV(plane->pos,20, plane->color);
+            DrawTextureV(plane->texture, plane->pos, WHITE);
         }
         EndDrawing();
     }
@@ -51,6 +47,4 @@ int main() {
 }
 
 void DrawAllPlane(void *value) {
-    E_Plane *plane = (E_Plane *)value;
-    DrawCircleV(plane->pos, 20, plane->color);
 }

@@ -3,10 +3,13 @@
 #endif
 
 #include "../export.h"
+#include "AssetContext.h"
 
 typedef struct GameContext {
     PlaneRepo *planeRepo;
     E_Input *input;
+    AssetContext *assetCtx;
+    
     int playerID;
     GameStatus status;
     float waveTimer;
@@ -17,7 +20,7 @@ GameContext *GameContext_New() {
     GameContext *ctx = calloc(1, sizeof(GameContext));
     ctx->planeRepo = PlaneRepo_New();
     ctx->waveTimer = 0;
-    ctx->interval = 1;
+    ctx->interval = 2;
     return ctx;
 }
 

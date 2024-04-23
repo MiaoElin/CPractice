@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct Dictionary Dictionary;
 typedef struct DictionaryEntry DictionaryEntry;
@@ -109,9 +110,9 @@ bool Dictionary_TryRemove(Dictionary *dic, long key) {
                 // 存下下一个入口
                 DictionaryEntry *next = entry->next;
                 // 清空这个入口的内存
-                free(entry);
-                entry = next;
+                memcpy(entry, next, sizeof(DictionaryEntry));
                 dic->count--;
+                free(next);
                 return true;
             }
             free(entry);
