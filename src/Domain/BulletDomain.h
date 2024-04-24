@@ -7,20 +7,23 @@ E_Bullet* BulletDomain_Spawn(GameContext* ctx, Vector2 pos, AllyEnum ally, Vecto
     Texture2D bullet;
     float moveSpeed;
     Movetype moveType;
-
+    int damage;
+    Vector2 size = {16, 16};
     // player
     if (ally == Ally_Player) {
         bullet = ctx->assetCtx->bullet1;
         moveSpeed = 400;
         moveType = Movetype_ByStatick;
+        damage = 10;
     }
     // 敌人
     if (ally == Ally_Enemy) {
         bullet = ctx->assetCtx->bullet2;
         moveSpeed = 200;
         moveType = Movetype_ByTrack;
+        damage = 5;
     }
-    E_Bullet* bul = E_Bullet_New(pos, bullet, moveSpeed, moveType, ally, faceDir);
+    E_Bullet* bul = E_Bullet_New(pos, damage, size, bullet, moveSpeed, moveType, ally, faceDir);
     bul->id = ctx->bulletRepo->bulletRecord++;
     BulletRepo_Add(ctx->bulletRepo, (long)bul->id, bul);
 }
@@ -37,11 +40,31 @@ void BullletDomain_Move(GameContext* ctx, E_Bullet* bul, float dt) {
     }
 }
 
+E_Plane* BulletDomain_FindNearlyEnemy(GameContext* ctx, Vector2 bulPos, AllyEnum bullAlly) {
+    return PlaneRepo_FindNearlyPlane(ctx->planeRepo, bulPos, bullAlly);
+}
+
+void BulletDomain_Remove(GameContext* ctx, E_Bullet* bul, E_Plane* plane) {
+    bool isInteract = PF_IsCircle_Rect_Interact(plane->pos, plane->size, bul->pos, bul->size);
+    if (isInteract) {
+        // 子弹死亡
+        bul->isDead = true;
+        // 飞机扣血
+        plane->hp -= bul->damage;
+        printf("%f\r\n", plane->hp);
+        if (plane->hp <= 0) {
+            // 飞机死亡
+            printf("has palne dead\r\n");
+            plane->isDead = true;
+        }
+    }
+}
+
 void BulletDomain_Draw(GameContext* ctx) {
-    void* allBullet[2048];
+    E_Bullet* allBullet[2048];
     int bulletCount = BulletRepo_TakeAll(ctx->bulletRepo, allBullet);
     for (int i = 0; i < bulletCount; i++) {
-        E_Bullet* bul = (E_Bullet*)allBullet[i];
+        E_Bullet* bul = allBullet[i];
         E_Bullet_Draw(bul);
     }
 }

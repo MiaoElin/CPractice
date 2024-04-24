@@ -3,4 +3,5 @@
 
 #include "../Collection/export.h"
 #include "../Entity/E_Export.h"
+#include "../Enum/export.h"
 #endif

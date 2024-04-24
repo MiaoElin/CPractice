@@ -47,6 +47,7 @@
         "purefunction.h": "c",
         "e_bullet.h": "c",
         "bulletrepo.h": "c",
-        "dictionarybyarr.h": "c"
+        "dictionarybyarr.h": "c",
+        "bulletdomain.h": "c"
     }
 }

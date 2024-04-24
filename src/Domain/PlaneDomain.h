@@ -2,12 +2,12 @@
 #define PLANEDOMAIN_H__
 
 #include "import.h"
-#include "BulletDomain.h"
 
 // 生成飞机
-E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Texture2D texture, Movetype movetype, AllyEnum ally, Vector2 faceDir, float interval) {
+E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float hpMax, Vector2 size, float speed, Texture2D texture, Movetype movetype, AllyEnum ally,
+                           Vector2 faceDir, float interval) {
     // printf("before repo arrlen is : %d\n", ctx->planeRepo->all->count);
-    E_Plane *plane = Plane_New(pos, speed, texture, movetype, ally, faceDir, interval);
+    E_Plane *plane = Plane_New(pos, hpMax, size, speed, texture, movetype, ally, faceDir, interval);
     assert(plane != NULL);
     plane->id = ctx->planeRepo->idRecord++;
     PlaneRepo_Add(ctx->planeRepo, (void *)plane);
@@ -47,7 +47,7 @@ void PlaneDomain_Draw(GameContext *ctx) {
     E_Plane *allPlane[1024];
     int planeCount = PlaneRepo_TakeAll(ctx->planeRepo, allPlane);
     for (size_t i = 0; i < planeCount; i++) {
-        E_Plane *plane = (E_Plane *)allPlane[i];
+        E_Plane *plane = allPlane[i];
         Plane_Draw(plane);
     }
 }

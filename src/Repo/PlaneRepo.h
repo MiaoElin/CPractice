@@ -2,6 +2,7 @@
 #define PLANEREPO_H__
 
 #include "import.h"
+#include "float.h"
 
 typedef struct PlaneRepo {
     Dictionary *all;
@@ -38,4 +39,29 @@ int PlaneRepo_TakeAll(PlaneRepo *repo, E_Plane **all) {
 int PlaneRepo_GetCount(PlaneRepo *repo) {
     return repo->all->count;
 }
+
+E_Plane *PlaneRepo_FindNearlyPlane(PlaneRepo *repo, Vector2 targetPos, AllyEnum ally) {
+    E_Plane *plane = NULL;
+    float nearlyDistance = FLT_MAX;
+    float currentDistance;
+    E_Plane *all[1024];
+    int planeCount = PlaneRepo_TakeAll(repo, all);
+    for (int i = 0; i < planeCount; i++) {
+        E_Plane *currentP = all[i];
+        if (currentP->ally == ally) {
+            continue;
+        }
+        currentDistance = Vector2DistanceSqr(currentP->pos, targetPos);
+        if (currentDistance <= nearlyDistance) {
+            nearlyDistance = currentDistance;
+            plane = currentP;
+        }
+    }
+    if (plane == NULL) {
+        return NULL;
+    } else {
+        return plane;
+    }
+}
+
 #endif

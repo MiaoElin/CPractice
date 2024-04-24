@@ -6,21 +6,28 @@
 typedef struct E_Bullet {
     int id;
     Vector2 pos;
+    Vector2 size; // 方形 长宽
     float moveSpeed;
     Texture2D texture;
     Movetype movetype;
     AllyEnum ally;
     Vector2 faceDir;
+    int damage;
+
+    bool isDead;
 } E_Bullet;
 
-E_Bullet* E_Bullet_New(Vector2 pos, Texture2D texture, float moveSpeed, Movetype moveType, AllyEnum ally, Vector2 faceDir) {
+E_Bullet* E_Bullet_New(Vector2 pos, int damage, Vector2 size, Texture2D texture, float moveSpeed, Movetype moveType, AllyEnum ally, Vector2 faceDir) {
     E_Bullet* bul = (E_Bullet*)malloc(sizeof(E_Bullet));
     bul->pos = pos;
+    bul->size = size;
     bul->moveSpeed = moveSpeed;
     bul->texture = texture;
     bul->movetype = moveType;
     bul->ally = ally;
     bul->faceDir = faceDir;
+    bul->isDead = false;
+    bul->damage = damage;
     return bul;
 }
 

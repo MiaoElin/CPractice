@@ -21,10 +21,10 @@ void BulletRepo_Free(BulletRepo *repo) {
 }
 
 bool BulletRepo_Add(BulletRepo *repo, long key, void *value) {
-  return  Dictionary_TryAdd(repo->all, key, value);
+    return Dictionary_TryAdd(repo->all, key, value);
 }
 
-int BulletRepo_TakeAll(BulletRepo *repo, void **arr) {
-    return Dictionary_GetAllValue(repo->all, arr);
+int BulletRepo_TakeAll(BulletRepo *repo, E_Bullet **arr) {
+    return Dictionary_GetAllValue(repo->all, (void **)arr);
 }
 #endif

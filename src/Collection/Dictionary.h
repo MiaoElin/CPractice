@@ -105,27 +105,46 @@ bool Dictionary_TryRemove(Dictionary *dic, long key) {
         printf("this Key is not Exists");
         return false;
     }
+    // 第一个入口
+    if (entry->key == key) {
+        printf("remove id is %d\r\n", key);
+        entry->isExists = false;
+        dic->count -= 1;
+        // 要移除的入口的一下不为空
+        if (entry->next != NULL) {
+            // 存下下一个入口
+            DictionaryEntry *next = entry->next;
+            // 清空这个入口的内存
+            memcpy(entry, next, sizeof(DictionaryEntry));
+            free(next);
+            return true;
+        }
+        return true;
+    }
+    // key没找到,就找下一个entry
+    entry = entry->next;
     // 有数据
-    do {
+    while (entry != NULL) {
         // 找到要移除的入口
         if (entry->key == key) {
+            printf("remove id is %d\r\n", key);
+            dic->count -= 1;
             // 要移除的入口的一下不为空
             if (entry->next != NULL) {
                 // 存下下一个入口
                 DictionaryEntry *next = entry->next;
                 // 清空这个入口的内存
                 memcpy(entry, next, sizeof(DictionaryEntry));
-                dic->count--;
                 free(next);
                 return true;
             }
-            free(entry);
-            dic->count--;
+            DictionaryEntry *next = NULL;
+            memcpy(entry, next, sizeof(DictionaryEntry));
             return true;
         }
         // key没找到,就找下一个entry
         entry = entry->next;
-    } while (entry != NULL);
+    }
     return false;
 }
 
@@ -140,7 +159,7 @@ int Dictionary_GetAllValue(Dictionary *dic, void **arr) {
             continue;
         }
         // 存在数据 NULL.xxx
-        while (entry != NULL) {
+        while (entry != NULL && entry->isExists) {
             // 存储数据
             assert(arrCount < dic->count);
             assert(entry->value != NULL);

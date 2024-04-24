@@ -35,7 +35,7 @@ E_Plane *GameContext_GetPlayer(GameContext *ctx) {
     if (!has) {
         return NULL;
     }
-    E_Plane *player = (E_Plane *)value;
+    E_Plane *player = value;
     return player;
 }
 
