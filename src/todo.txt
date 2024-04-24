@@ -4,6 +4,9 @@
   4. 登录UI、游戏界面UI（显示生命值就好）、游戏胜负UI
   5. Dictionary key为任意类型的情况
 
+ === bug ===
+ 1.NearlyEnemy* plane 找不到
+
 
   gcc e:\project\Clan\build.c -o e:\project\Clan\build.exe
 build.exe e:\project\Clan\src e:\project\Clan\bin

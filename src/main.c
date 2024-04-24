@@ -24,7 +24,7 @@ int main() {
         E_Input_Process(ctx->input);
 
         BeginDrawing();
-        ClearBackground(WHITE);
+        ClearBackground(GRAY);
 
         // ==== Tick ====
         GameBusiness_Tick(ctx->gameCtx, dt);
@@ -33,7 +33,6 @@ int main() {
         GameBusiness_Draw(ctx->gameCtx);
 
         // ==== Draw UI ====
-
         EndDrawing();
     }
     CloseWindow();
