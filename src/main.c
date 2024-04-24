@@ -17,20 +17,22 @@ int main() {
     Game_Enter(ctx->gameCtx);
 
     while (!WindowShouldClose()) {
-        
+
         float dt = GetFrameTime();
 
-        // input
+        // ==== Input ====
         E_Input_Process(ctx->input);
 
         BeginDrawing();
         ClearBackground(WHITE);
 
-        // Tick
+        // ==== Tick ====
         GameBusiness_Tick(ctx->gameCtx, dt);
 
-        // Draw World
+        // ==== Draw World ====
         GameBusiness_Draw(ctx->gameCtx);
+
+        // ==== Draw UI ====
 
         EndDrawing();
     }

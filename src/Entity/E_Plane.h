@@ -4,7 +4,7 @@
 #include <math.h>
 #include "E_import.h"
 
-#define M_PI		3.14159265358979323846
+#define M_PI 3.14159265358979323846
 
 typedef struct E_Plane {
     Vector2 pos;
@@ -47,10 +47,11 @@ void Plane_Draw(E_Plane *plane) {
     Rectangle dest = {plane->pos.x, plane->pos.y, plane->texture.width, plane->texture.height};
     Vector2 center = {plane->texture.width / 2, plane->texture.height / 2};
     Vector2 star = {0, -1};
-    float rotation = Vector2LineAngle(star, plane->faceDir);
+    Vector2 end = {0, 1};
+    float rotation = Vector2LineAngle(star, end);
     rotation = rotation * 180 / M_PI;
     // printf("%f\n", rotation);
-    printf("%f %f\r\n",plane->faceDir.x,plane->faceDir.y);
+    printf("%f %f\r\n", plane->faceDir.x, plane->faceDir.y);
     DrawTexturePro(plane->texture, sour, dest, center, rotation, WHITE);
 }
 

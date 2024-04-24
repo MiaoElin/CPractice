@@ -12,10 +12,10 @@ typedef struct AssetContext {
 
 AssetContext *AssetContext_New() {
     AssetContext *assets = calloc(1, sizeof(AssetContext));
-    assets->player1 = LoadTexture("E:/Project/Clan/Assets/player1.png");
-    assets->enemy1 = LoadTexture("E:/Project/Clan/Assets/enemy1.png");
-    assets->bullet1 = LoadTexture("E:/Project/Clan/Assets/bullet1.png");
-    assets->bullet2 = LoadTexture("E:/Project/Clan/Assets/bullet2.png");
+    assets->player1 = LoadTexture("./Assets/player1.png");
+    assets->enemy1 = LoadTexture("./Assets/enemy1.png");
+    assets->bullet1 = LoadTexture("./Assets/bullet1.png");
+    assets->bullet2 = LoadTexture("./Assets/bullet2.png");
 
     return assets;
 }
