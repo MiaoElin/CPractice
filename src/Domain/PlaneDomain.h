@@ -24,5 +24,5 @@ void PlaneDoMain_Move(GameContext *ctx, E_Plane *plane, float dt) {
         Plane_Move(plane, dir, dt);
     }
 }
-#endif
 
+#endif

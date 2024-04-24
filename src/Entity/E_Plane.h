@@ -49,7 +49,7 @@ void Plane_Draw(E_Plane *plane) {
     Vector2 star = {0, -1};
     float rotation = Vector2LineAngle(star, plane->faceDir);
     rotation = rotation * 180 / M_PI;
-    printf("%f\n", rotation);
+    // printf("%f\n", rotation);
     // printf("%f %f\r\n",plane->faceDir.x,plane->faceDir.y);
     DrawTexturePro(plane->texture, sour, dest, center, rotation, WHITE);
 }

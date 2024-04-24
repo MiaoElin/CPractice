@@ -35,5 +35,14 @@ void E_Bullet_Free(E_Bullet* bul) {
 }
 
 void E_Bullet_Draw(E_Bullet* bul) {
+        Rectangle sour = {0, 0, bul->texture.width, bul->texture.height};
+    Rectangle dest = {bul->pos.x, bul->pos.y, bul->texture.width, bul->texture.height};
+    Vector2 center = {bul->texture.width / 2, bul->texture.height / 2};
+    Vector2 star = {0, -1};
+    float rotation = Vector2LineAngle(star, bul->faceDir);
+    rotation = rotation * 180 / M_PI;
+    // printf("%f\n", rotation);
+    // printf("%f %f\r\n",plane->faceDir.x,plane->faceDir.y);
+    DrawTexturePro(bul->texture, sour, dest, center, rotation, WHITE);
 }
 #endif
