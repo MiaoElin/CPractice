@@ -1,7 +1,7 @@
 #include <stdio.h> // 官方库
 #include <stdlib.h>
 #include <assert.h>
-#include "Business/GameBusiness.h"
+#include "import.h"
 
 void DrawAllPlane(void *value);
 

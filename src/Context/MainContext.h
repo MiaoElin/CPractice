@@ -1,6 +1,5 @@
 #ifndef MAINCONTEXT_H__
 #define MAINCONTEXT_H__
-#endif
 
 #include "GameContext.h"
 
@@ -26,3 +25,4 @@ void MainCtx_Free(MainContext *ctx) {
     AssetContext_Free(ctx->assetCtx);
     free(ctx);
 }
+#endif

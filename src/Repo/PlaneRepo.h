@@ -1,8 +1,7 @@
 #ifndef PLANEREPO_H__
 #define PLANEREPO_H__
-#endif
 
-#include "../Dictionary.h"
+#include "import.h"
 
 typedef struct PlaneRepo {
     Dictionary *all;
@@ -39,3 +38,4 @@ int PlaneRepo_TakeAll(PlaneRepo *repo, void** all) {
 int PlaneRepo_GetCount(PlaneRepo *repo) {
     return repo->all->count;
 }
+#endif

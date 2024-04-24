@@ -1,6 +1,5 @@
 #ifndef DICTIONARYBYARR_H__
 #define DICTIONARYBYARR_H__
-#endif
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -75,3 +74,4 @@ void DictionaryByarr_Free(DictionaryByarr *dic) {
     free(dic->value);
     free(dic);
 }
+#endif

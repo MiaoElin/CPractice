@@ -1,9 +1,10 @@
 #ifndef ALLY_H__
 #define ALLY_H__
-#endif
 
-typedef enum Ally{
-    AllyNone,
-    Player,
-    Enemy
-}Ally;
+typedef enum AllyEnum
+{
+    Ally_None,
+    Ally_Player,
+    Ally_Enemy
+} AllyEnum;
+#endif

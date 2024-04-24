@@ -1,6 +1,7 @@
 #ifndef BULLETREPO_H__
 #define BULLETREPO_H__
-#endif
+
+#include "import.h"
 
 typedef struct BulletRepo {
     Dictionary *all;
@@ -18,3 +19,4 @@ void BulletRepo_Free(BulletRepo *repo) {
     Dictionary_Free(repo->all);
     free(repo);
 }
+#endif

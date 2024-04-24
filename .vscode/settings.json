@@ -44,6 +44,9 @@
         "ally.h": "c",
         "math.h": "c",
         "assetcontext.h": "c",
-        "purefunction.h": "c"
+        "purefunction.h": "c",
+        "e_bullet.h": "c",
+        "bulletrepo.h": "c",
+        "dictionarybyarr.h": "c"
     }
 }

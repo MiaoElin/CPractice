@@ -1,6 +1,5 @@
 #ifndef SAMPLE_H__
 #define SAMPLE_H__
-#endif
 
 #include "IntArraySort.h"
 #include "MyVector3.h"
@@ -8,13 +7,11 @@
 
 #define ARRAYLEN(arr) (sizeof(arr) / sizeof(arr[0]))
 
-void MyListPrintfAll(int index, int value)
-{
+void MyListPrintfAll(int index, int value) {
     printf("arr %d is : %d\n", index, value);
 }
 
-void SampleEntry()
-{
+void SampleEntry() {
     // 自定义类
     MyVector3 v3 = NewVector3(0, 2, 3);
     MyVector3 v4 = NewVector3(0, 2, 3);
@@ -44,3 +41,4 @@ void SampleEntry()
 
     // MyList_Foreach(list,MyListPrintfAll);
 }
+#endif

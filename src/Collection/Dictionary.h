@@ -1,16 +1,20 @@
 #ifndef DICTIONARY_H__
 #define DICTIONARY_H__
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Dictionary Dictionary;
+#ifndef bool
+#define bool char
+#define true 1
+#define false 0
+#endif
+
 typedef struct DictionaryEntry DictionaryEntry;
+typedef struct Dictionary Dictionary;
 
 struct DictionaryEntry {
-
     long key;
     void *value;
     bool isExists;
@@ -148,3 +152,4 @@ int Dictionary_GetAllValue(Dictionary *dic, void **arr) {
     }
     return arrCount;
 }
+#endif

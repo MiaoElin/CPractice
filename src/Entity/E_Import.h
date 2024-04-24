@@ -1,6 +1,8 @@
 #ifndef E_IMPORT_H__
 #define E_IMPORT_H__
-#endif 
 
-#include "../../include./raylib.h"
-#include "../../include./raymath.h"
+#include "../../include/raylib.h"
+#include "../../include/raymath.h"
+#include "../Enum/export.h"
+#include "../Collection/export.h"
+#endif 

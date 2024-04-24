@@ -1,15 +1,13 @@
 #ifndef ASSETCONTEXT_H__
 #define ASSETCONTEXT_H__
-#endif
 
-#include "../import.h"
+#include "../../include/raylib.h"
 
 typedef struct AssetContext {
     Texture2D player1;
     Texture2D enemy1;
     Texture2D bullet1;
     Texture2D bullet2;
-
 } AssetContext;
 
 AssetContext *AssetContext_New() {
@@ -29,3 +27,4 @@ void AssetContext_Free(AssetContext *assetCtx) {
     UnloadTexture(assetCtx->bullet2);
     free(assetCtx);
 }
+#endif

@@ -1,9 +1,9 @@
 #ifndef GAMECONTEXT_H__
 #define GAMECONTEXT_H__
-#endif
 
-#include "../export.h"
 #include "AssetContext.h"
+#include "../Entity/E_Export.h"
+#include "../Repo/export.h"
 
 typedef struct GameContext {
     E_Input *input;
@@ -44,3 +44,4 @@ void GameContext_Free(GameContext *ctx) {
     BulletRepo_Free(ctx->bulletRepo);
     free(ctx);
 }
+#endif

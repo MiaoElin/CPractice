@@ -1,6 +1,5 @@
 // #ifndef FACTORY_H__
 // #define FACTORY_H__
-// #endif
 
 // #include "export.h"
 
@@ -10,3 +9,4 @@
 // } Factory;
 
 // E_Plane* CreateEplane()
+// #endif

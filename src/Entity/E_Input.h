@@ -1,6 +1,5 @@
 #ifndef E_INPUT_H__
 #define E_INPUT_H__
-#endif
 
 #include "E_import.h"
 
@@ -32,3 +31,4 @@ void E_Input_Process(E_Input *input) {
 
     input->isShootBul = IsKeyDown(KEY_SPACE);
 }
+#endif

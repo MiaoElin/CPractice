@@ -1,6 +1,5 @@
 #ifndef LIST_H__
 #define LIST_H__
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,3 +69,4 @@ void List_Foreach(List *list, void (*action)(void *plane)) {
         action(a);
     }
 }
+#endif
