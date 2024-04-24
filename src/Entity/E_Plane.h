@@ -47,11 +47,10 @@ void Plane_Draw(E_Plane *plane) {
     Rectangle dest = {plane->pos.x, plane->pos.y, plane->texture.width, plane->texture.height};
     Vector2 center = {plane->texture.width / 2, plane->texture.height / 2};
     Vector2 star = {0, -1};
-    Vector2 end = {0, 1};
-    float rotation = Vector2LineAngle(star, end);
-    rotation = rotation * 180 / M_PI;
+    float rotation = Vector2Angle(star, plane->faceDir);
+    rotation = rotation * RAD2DEG;
     // printf("%f\n", rotation);
-    printf("%f %f\r\n", plane->faceDir.x, plane->faceDir.y);
+    // printf("%f %f\r\n", plane->faceDir.x, plane->faceDir.y);
     DrawTexturePro(plane->texture, sour, dest, center, rotation, WHITE);
 }
 

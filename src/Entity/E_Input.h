@@ -23,7 +23,9 @@ void E_Input_Process(E_Input *input) {
         input->moveAxis.y = -1;
     } else if (IsKeyDown(KEY_S)) {
         input->moveAxis.y = 1;
-    } else if (IsKeyDown(KEY_A)) {
+    }
+
+    if (IsKeyDown(KEY_A)) {
         input->moveAxis.x = -1;
     } else if (IsKeyDown(KEY_D)) {
         input->moveAxis.x = 1;

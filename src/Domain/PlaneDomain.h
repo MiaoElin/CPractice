@@ -44,7 +44,7 @@ void PlaneDomain_ShootBul(GameContext *ctx, E_Plane *plane, float dt) {
 
 void PlaneDomain_Draw(GameContext *ctx) {
     // 画飞机
-    void *allPlane[1024];
+    E_Plane *allPlane[1024];
     int planeCount = PlaneRepo_TakeAll(ctx->planeRepo, allPlane);
     for (size_t i = 0; i < planeCount; i++) {
         E_Plane *plane = (E_Plane *)allPlane[i];

@@ -21,8 +21,8 @@ void PlaneRepo_Add(PlaneRepo *repo, E_Plane *plane) {
     Dictionary_TryAdd(repo->all, (long)(plane->id), plane);
 }
 
-bool PlaneRepo_Find(PlaneRepo *repo, int id, void **value) {
-    return Dictionary_TryGetValue(repo->all, (long)id, value);
+bool PlaneRepo_Find(PlaneRepo *repo, int id, E_Plane **value) {
+    return Dictionary_TryGetValue(repo->all, (long)id, (void **)value);
 }
 
 void PlaneRepo_Free(PlaneRepo *repo) {
@@ -31,8 +31,8 @@ void PlaneRepo_Free(PlaneRepo *repo) {
 }
 
 // E_Plane*[]
-int PlaneRepo_TakeAll(PlaneRepo *repo, void** all) {
-    return Dictionary_GetAllValue(repo->all, all);
+int PlaneRepo_TakeAll(PlaneRepo *repo, E_Plane **all) {
+    return Dictionary_GetAllValue(repo->all, (void **)all);
 }
 
 int PlaneRepo_GetCount(PlaneRepo *repo) {

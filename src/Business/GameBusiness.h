@@ -42,7 +42,7 @@ void GameBusiness_IngameTick(GameContext *ctx, float dt) {
     // PlaneDoMain_Move(ctx, player, dt);
 
     // 飞机移动
-    void *allPlane[1024];
+    E_Plane *allPlane[1024];
     int count = PlaneRepo_TakeAll(ctx->planeRepo, allPlane);
     // int planeCount = PlaneRepo_GetCount(ctx->planeRepo);
     // printf("%d\r\n", planeCount);

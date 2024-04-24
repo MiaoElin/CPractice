@@ -30,7 +30,7 @@ GameContext *GameContext_New() {
 }
 
 E_Plane *GameContext_GetPlayer(GameContext *ctx) {
-    void *value;
+    E_Plane *value;
     bool has = PlaneRepo_Find(ctx->planeRepo, ctx->playerID, &value);
     if (!has) {
         return NULL;
