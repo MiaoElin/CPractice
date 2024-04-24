@@ -25,22 +25,6 @@ E_Bullet* BulletDomain_Spawn(GameContext* ctx, Vector2 pos, AllyEnum ally, Vecto
     BulletRepo_Add(ctx->bulletRepo, (long)bul->id, bul);
 }
 
-void BulletDomain_ShootBul(GameContext* ctx, E_Plane* plane, float dt) {
-    float* interval = &plane->interval;
-    plane->timer += dt;
-    // printf("%f\n", plane->timer);
-    if (plane->timer >= *interval) {
-        plane->timer = 0;
-        if (plane->ally == Ally_Player) {
-            if (ctx->input->isShootBul) {
-                BulletDomain_Spawn(ctx, plane->pos, Ally_Player, plane->faceDir);
-            }
-        } else if (plane->ally == Ally_Enemy) {
-            BulletDomain_Spawn(ctx, plane->pos, Ally_Enemy, plane->faceDir);
-        }
-    }
-}
-
 void BullletDomain_Move(GameContext* ctx, E_Bullet* bul, float dt) {
     if (bul->movetype == Movetype_ByStatick) {
         Vector2 dir = {0, -1};
@@ -50,6 +34,15 @@ void BullletDomain_Move(GameContext* ctx, E_Bullet* bul, float dt) {
         E_Plane* player = GameContext_GetPlayer(ctx);
         Vector2 dir = Vector2Subtract(player->pos, bul->pos);
         E_Bullet_Move(bul, dir, dt);
+    }
+}
+
+void BulletDomain_Draw(GameContext* ctx) {
+    void* allBullet[2048];
+    int bulletCount = BulletRepo_TakeAll(ctx->bulletRepo, allBullet);
+    for (int i = 0; i < bulletCount; i++) {
+        E_Bullet* bul = (E_Bullet*)allBullet[i];
+        E_Bullet_Draw(bul);
     }
 }
 #endif

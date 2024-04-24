@@ -1,7 +1,8 @@
 #ifndef PLANEDOMAIN_H__
 #define PLANEDOMAIN_H__
 
-#include "../Context/MainContext.h"
+#include "import.h"
+#include "BulletDomain.h"
 
 // 生成飞机
 E_Plane *PlaneDomain_Spawn(GameContext *ctx, Vector2 pos, float speed, Texture2D texture, Movetype movetype, AllyEnum ally, Vector2 faceDir, float interval) {
@@ -22,6 +23,32 @@ void PlaneDoMain_Move(GameContext *ctx, E_Plane *plane, float dt) {
         E_Plane *player = GameContext_GetPlayer(ctx);
         Vector2 dir = Vector2Subtract(player->pos, plane->pos);
         Plane_Move(plane, dir, dt);
+    }
+}
+
+void PlaneDomain_ShootBul(GameContext *ctx, E_Plane *plane, float dt) {
+    float *interval = &plane->interval;
+    plane->timer += dt;
+    // printf("%f\n", plane->timer);
+    if (plane->timer >= *interval) {
+        plane->timer = 0;
+        if (plane->ally == Ally_Player) {
+            if (ctx->input->isShootBul) {
+                BulletDomain_Spawn(ctx, plane->pos, Ally_Player, plane->faceDir);
+            }
+        } else if (plane->ally == Ally_Enemy) {
+            BulletDomain_Spawn(ctx, plane->pos, Ally_Enemy, plane->faceDir);
+        }
+    }
+}
+
+void PlaneDomain_Draw(GameContext *ctx) {
+    // 画飞机
+    void *allPlane[1024];
+    int planeCount = PlaneRepo_TakeAll(ctx->planeRepo, allPlane);
+    for (size_t i = 0; i < planeCount; i++) {
+        E_Plane *plane = (E_Plane *)allPlane[i];
+        Plane_Draw(plane);
     }
 }
 

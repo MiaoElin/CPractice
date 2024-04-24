@@ -52,7 +52,7 @@ void GameBusiness_IngameTick(GameContext *ctx, float dt) {
         // printf(txt);
         // assert(plane != NULL);
         PlaneDoMain_Move(ctx, plane, dt);
-        BulletDomain_ShootBul(ctx, plane, dt);
+        PlaneDomain_ShootBul(ctx, plane, dt);
     }
 
     // 子弹移动
@@ -62,6 +62,11 @@ void GameBusiness_IngameTick(GameContext *ctx, float dt) {
         E_Bullet *bul = (E_Bullet *)allBullet[i];
         BullletDomain_Move(ctx, bul, dt);
     }
+}
+
+void GameBusiness_Draw(GameContext *ctx) {
+    BulletDomain_Draw(ctx);
+    PlaneDomain_Draw(ctx);
 }
 
 void GameBusiness_Tick(GameContext *ctx, float dt) {
