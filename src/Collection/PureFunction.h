@@ -22,6 +22,12 @@ bool PF_IsCircle_Rect_Interact(Vector2 circlePos, Vector2 circleSize, Vector2 re
     }
 }
 
-
+bool PF_IsPointInRect(Vector2 pointPos, Vector2 rectPos, Vector2 rectSize) {
+    Vector2 rightBottom = Vector2Add(rectPos, rectSize);
+    if (pointPos.x >= rectPos.x && pointPos.x <= rightBottom.x && pointPos.y >= rectPos.y && pointPos.y <= rightBottom.y) {
+        return true;
+    }
+    return false;
+}
 
 #endif

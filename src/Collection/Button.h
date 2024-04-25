@@ -26,10 +26,17 @@ void Button_Free(Button* btn) {
     free(btn);
 }
 
-
+bool Button_IsMouseIN(Button* btn) {
+    return PF_IsPointInRect(GetMousePosition(), btn->pos, btn->size);
+}
 
 void Button_Draw(Button* btn) {
+    if (Button_IsMouseIN(btn)) {
+        DrawRectangleV(btn->pos, btn->size, GREEN);
+        DrawText(btn->nameTxt, btn->pos.x + 18, btn->pos.y + 8, 12, btn->txtColor);
+        return;
+    }
     DrawRectangleV(btn->pos, btn->size, btn->bgColor);
-    DrawText(btn->nameTxt, btn->pos.x+18, btn->pos.y+8, 12, btn->txtColor);
+    DrawText(btn->nameTxt, btn->pos.x + 18, btn->pos.y + 8, 12, btn->txtColor);
 }
 #endif
