@@ -4,6 +4,7 @@
 typedef enum
 {
     GameStatus_None,
+    GameStatus_Enter,
     GameStatus_Ingame,
     GameStatus_Pause
 } GameStatus;

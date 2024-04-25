@@ -1,9 +1,9 @@
 #ifndef GAMECONTEXT_H__
 #define GAMECONTEXT_H__
 
-#include "AssetContext.h"
 #include "../Entity/E_Export.h"
 #include "../Repo/export.h"
+#include "AssetContext.h"
 
 typedef struct GameContext {
     E_Input *input;

@@ -14,7 +14,7 @@ int main() {
 
     MainContext *ctx = New_MainContext();
     assert(ctx != NULL);
-    Game_Enter(ctx->gameCtx);
+    LoginBusiness_Enter(ctx);
 
     while (!WindowShouldClose()) {
 
@@ -27,12 +27,15 @@ int main() {
         ClearBackground(GRAY);
 
         // ==== Tick ====
+        LoginBusiness_Tick(ctx);
         GameBusiness_Tick(ctx->gameCtx, dt);
 
         // ==== Draw World ====
         GameBusiness_Draw(ctx->gameCtx);
 
         // ==== Draw UI ====
+        LoginBusiness_Draw(ctx);
+
         EndDrawing();
     }
     CloseWindow();

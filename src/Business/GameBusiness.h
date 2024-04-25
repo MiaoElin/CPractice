@@ -6,11 +6,7 @@
 #include "../Domain/BulletDomain.h"
 #include "../Domain/PlaneDomain.h"
 
-typedef struct GameBusiness {
-
-} GameBusiness;
-
-void Game_Enter(GameContext *ctx) {
+void GameBusiness_Enter(GameContext *ctx) {
     // 生成Player
     Vector2 playerPos = {300, 500};
     Vector2 faceDir = {0, -1};
@@ -99,7 +95,9 @@ void GameBusiness_Draw(GameContext *ctx) {
 
 void GameBusiness_Tick(GameContext *ctx, float dt) {
     GameStatus status = ctx->status;
-    if (status == GameStatus_Ingame) {
+    if (status == GameStatus_Enter) {
+        GameBusiness_Enter(ctx);
+    } else if (status == GameStatus_Ingame) {
         GameBusiness_IngameTick(ctx, dt);
     }
 }

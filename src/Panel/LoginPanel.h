@@ -15,8 +15,9 @@ LoginPanel* LoginPanel_New() {
 }
 
 void LoginPanel_Ctor(LoginPanel* panel) {
+    panel->isOpen = true;
     Vector2 pos = {250, 250};
-    Vector2 size = {100, 40};
+    Vector2 size = {100, 30};
     char* name = "Start Game";
     panel->starBtn = Button_New(pos, size, BLACK, name, WHITE);
 }
@@ -24,5 +25,9 @@ void LoginPanel_Ctor(LoginPanel* panel) {
 void LoginPanel_Free(LoginPanel* panel) {
     Button_Free(panel->starBtn);
     free(panel);
+}
+
+void* LoginPanel_Draw(LoginPanel* panel) {
+    Button_Draw(panel->starBtn);
 }
 #endif

@@ -10,6 +10,7 @@ typedef struct UIContext {
 UIContext *UIContext_New() {
     UIContext *ctx = (UIContext *)malloc(sizeof(UIContext));
     ctx->loginPanel = LoginPanel_New();
+    return ctx;
 }
 
 void UIContext_Free(UIContext *ctx) {

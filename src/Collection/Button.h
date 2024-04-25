@@ -26,8 +26,10 @@ void Button_Free(Button* btn) {
     free(btn);
 }
 
+
+
 void Button_Draw(Button* btn) {
     DrawRectangleV(btn->pos, btn->size, btn->bgColor);
-    DrawText(btn->nameTxt, btn->pos.x, btn->pos.y, 12, btn->txtColor);
+    DrawText(btn->nameTxt, btn->pos.x+18, btn->pos.y+8, 12, btn->txtColor);
 }
 #endif

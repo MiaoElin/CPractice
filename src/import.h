@@ -7,5 +7,6 @@
 #include "Entity/E_Export.h"
 #include "Context/MainContext.h"
 #include "Business/GameBusiness.h"
+#include "Business/LoginPanelBusiness.h"
 
-#endif 
+#endif

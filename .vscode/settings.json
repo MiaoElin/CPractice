@@ -48,6 +48,10 @@
         "e_bullet.h": "c",
         "bulletrepo.h": "c",
         "dictionarybyarr.h": "c",
-        "bulletdomain.h": "c"
+        "bulletdomain.h": "c",
+        "button.h": "c",
+        "uicontext.h": "c",
+        "panel_export.h": "c",
+        "uidomain.h": "c"
     }
 }
