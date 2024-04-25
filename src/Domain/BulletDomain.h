@@ -40,8 +40,11 @@ void BullletDomain_Move(GameContext* ctx, E_Bullet* bul, float dt) {
     }
 }
 
-E_Plane* BulletDomain_FindNearlyEnemy(GameContext* ctx, Vector2 bulPos, AllyEnum bullAlly) {
-    return PlaneRepo_FindNearlyPlane(ctx->planeRepo, bulPos, bullAlly);
+bool BulletDomain_FindNearlyEnemy(GameContext* ctx, Vector2 bulPos, AllyEnum bullAlly, E_Plane** plane) {
+
+    bool has = PlaneRepo_FindNearlyPlane(ctx->planeRepo, bulPos, bullAlly, plane);
+    // printf("has nearlyenemy,id is :%d\r\n", plane->id);
+    return has;
 }
 
 void BulletDomain_Remove(GameContext* ctx, E_Bullet* bul, E_Plane* plane) {

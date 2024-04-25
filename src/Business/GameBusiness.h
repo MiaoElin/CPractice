@@ -61,9 +61,9 @@ void GameBusiness_IngameTick(GameContext *ctx, float dt) {
             BulletDomain_Remove(ctx, bul, nearlyPlane);
         }
         if (bul->ally == Ally_Player) {
-            E_Plane *nearlyPlane = BulletDomain_FindNearlyEnemy(ctx, bul->pos, bul->ally);
-            if (nearlyPlane != NULL) {
-                // printf("has nearlyenemy,id is :%d\r\n", nearlyPlane->id);
+            E_Plane *nearlyPlane;
+            bool has = BulletDomain_FindNearlyEnemy(ctx, bul->pos, bul->ally, &nearlyPlane);
+            if (has) {
                 BulletDomain_Remove(ctx, bul, nearlyPlane);
             }
         }

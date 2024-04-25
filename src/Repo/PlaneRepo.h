@@ -40,8 +40,8 @@ int PlaneRepo_GetCount(PlaneRepo *repo) {
     return repo->all->count;
 }
 
-E_Plane *PlaneRepo_FindNearlyPlane(PlaneRepo *repo, Vector2 targetPos, AllyEnum ally) {
-    E_Plane *plane = NULL;
+bool PlaneRepo_FindNearlyPlane(PlaneRepo *repo, Vector2 targetPos, AllyEnum ally, E_Plane **plane) {
+    // E_Plane *nearlyP;
     float nearlyDistance = FLT_MAX;
     float currentDistance;
     E_Plane *all[1024];
@@ -54,13 +54,15 @@ E_Plane *PlaneRepo_FindNearlyPlane(PlaneRepo *repo, Vector2 targetPos, AllyEnum 
         currentDistance = Vector2DistanceSqr(currentP->pos, targetPos);
         if (currentDistance <= nearlyDistance) {
             nearlyDistance = currentDistance;
-            plane = currentP;
+            *plane = currentP;
         }
     }
+    // plane = nearlyP;
     if (plane == NULL) {
-        return NULL;
+        return false;
     } else {
-        return plane;
+        printf("has nearlyenemy,id is :%d\r\n", (*plane)->id);
+        return true;
     }
 }
 
